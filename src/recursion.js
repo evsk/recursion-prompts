@@ -33,7 +33,7 @@ var sum = function(array) {
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
 	var n = array.length - 1;
-	console.log(n)
+	//console.log(n)
 	// base case
 	if (array[n] === undefined) {
 		return 0;
@@ -90,12 +90,19 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
-	// base case
-	if (x === y - 1) {
-		return [x];
+
+	if (x < y && x + 1 !== y) {
+		x++;
+		return [x].concat(range(x, y));
 	}
-	// recursive case
-	return [x+1].concat(range(x+1, y));
+
+	if (x > y && x - 1 !== y) {
+		x--;
+		return [x].concat(range(x, y));
+	}
+
+	return []; // base case
+	
 };
 
 // 7. Compute the exponent of a number.
@@ -113,29 +120,19 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-	// base case
-	if (n % 2 > 0) {
-		return false
-	} else if ( n === 2) {
-		return true;
-	}
-
 	
-	// recursive case
-	return powerOfTwo(n/2);
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
 	// base case
-	if (string.length = 1) {
+	if (string.length === 1) {
 		return string;
 	}
-
 	// recursive case
-	var letter = string.pop();
-
-	return letter.concat(reverse(string));
+	var letters = string.split('');
+	var char = letters.pop();
+	return char.concat(reverse(letters.join('')));
 
 };
 
