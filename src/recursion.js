@@ -6,67 +6,67 @@
 // denoted by n!, is the product of all positive integers less than or equal to n.
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
-var factorial = function(n) {
-	if (n < 0) {
-		return null;
-	} else if(n <= 1) {
-		return 1;
-	} else {
-		return n * factorial(n - 1);
-	}
+var factorial = function(n) {        
+    if (n < 0) {     
+        return null;
+    } else if(n <= 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
-	var n = array.length - 1;
-	if (array[n] === undefined) {
-		return 0;
-	} else if (n === 0) {
-		return array[n];
-	} else {
-		return array[n] + sum(array.slice(0,n));
-	}
+    var n = array.length - 1;
+    if (array[n] === undefined) {
+        return 0;
+    } else if (n === 0) {
+        return array[n];
+    } else {
+        return array[n] + sum(array.slice(0,n));
+    }
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
-	var n = array.length - 1;
-	//console.log(n)
-	// base case
-	if (array[n] === undefined) {
-		return 0;
-	} else if (n === 0 && !Array.isArray(array[n])) { // catch type coercion to string for things like [1] + 1 // returns '11'
-		return array[n];
-	}
+    var n = array.length - 1;
+    //console.log(n)
+    // base case
+    if (array[n] === undefined) {
+        return 0;
+    } else if (n === 0 && !Array.isArray(array[n])) { // catch type coercion to string for things like [1] + 1 // returns '11'
+        return array[n];
+    }
 
-	// recursive case
-	if (Array.isArray(array[n])) {
-		var innerArraySum = arraySum(array[n]); // run new recursive for inner array
-		return innerArraySum + arraySum(array.slice(0,n));
-	} else {
-		return array[n] + arraySum(array.slice(0,n));
-	}
+    // recursive case
+    if (Array.isArray(array[n])) {
+        var innerArraySum = arraySum(array[n]); // run new recursive for inner array
+        return innerArraySum + arraySum(array.slice(0,n));
+    } else {
+        return array[n] + arraySum(array.slice(0,n));
+    }
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-	// base case
-	if (n === 0) {
-		return true;
-	} else if (n === 1){
-		return false;
-	}
+    // base case
+    if (n === 0) {
+        return true;
+    } else if (n === 1){
+        return false;
+    }
 
-	// recursive case
-	if (n > 0) {
-		return isEven(n-2);
+    // recursive case
+    if (n > 0) {
+        return isEven(n-2);
 
-	} else {
-		return isEven(n+2); // negative numbers
-	}
-	
+    } else {
+        return isEven(n+2); // negative numbers
+    }
+    
 
 };
 
@@ -74,35 +74,35 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n) {
-	// base case
-	if (n === 0) {
-		return n;
-	}
-	// recursive case
-	if (n > 0) {
-		return n-1 + sumBelow(n-1);
-	} else {
-		return n+1 + sumBelow(n+1);
-	}
-	
+    // base case
+    if (n === 0) {
+        return n;
+    }
+    // recursive case
+    if (n > 0) {
+        return n-1 + sumBelow(n-1);
+    } else {
+        return n+1 + sumBelow(n+1);
+    }
+    
 };
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
 
-	if (x < y && x + 1 !== y) {
-		x++;
-		return [x].concat(range(x, y));
-	}
+    if (x < y && x + 1 !== y) {
+        x++;
+        return [x].concat(range(x, y));
+    }
 
-	if (x > y && x - 1 !== y) {
-		x--;
-		return [x].concat(range(x, y));
-	}
+    if (x > y && x - 1 !== y) {
+        x--;
+        return [x].concat(range(x, y));
+    }
 
-	return []; // base case
-	
+    return []; // base case
+    
 };
 
 // 7. Compute the exponent of a number.
@@ -111,8 +111,8 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-	// base case
-	
+    // base case
+    
 };
 
 // 8. Determine if a number is a power of two.
@@ -120,19 +120,19 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
-	
+    
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
-	// base case
-	if (string.length === 1) {
-		return string;
-	}
-	// recursive case
-	var letters = string.split('');
-	var char = letters.pop();
-	return char.concat(reverse(letters.join('')));
+    // base case
+    if (string.length === 1) {
+        return string;
+    }
+    // recursive case
+    var letters = string.split('');
+    var char = letters.pop();
+    return char.concat(reverse(letters.join('')));
 
 };
 
@@ -313,6 +313,20 @@ var numToText = function(str) {
 
 // 37. Return the number of times a tag occurs in the DOM.
 var tagCount = function(tag, node) {
+    var tagCounter = 0;
+    var element = node || document.body; // if a node argument is passed in (e.g. when called recursively)
+    // check current node (also base case)
+    if (element.nodeName.toLowerCase() === tag) {
+        tagCounter++;
+    }
+    // recursively traverse DOM
+    if (element.children) {
+        for (var i = 0; i < element.children.length; i++) {
+            tagCounter += tagCount(tag, element.children[i]);
+        }
+    }
+    return tagCounter;
+    
 };
 
 // 38. Write a function for binary search.
@@ -320,13 +334,76 @@ var tagCount = function(tag, node) {
 // binarySearch(array, 5) // 5
 // https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
 var binarySearch = function(array, target, min, max) {
+   // in case min and max params are not passed in
+    var min = min || 0;
+    var max = arguments.length === 4 ? max : array.length - 1; // avoids 0 index evaluating to false with ||
+
+    var guess = Math.floor((min + max) / 2); // start with 0 and arr.length - 1
+    console.log(guess);
+
+    // base cases
+    if (array[guess] === target) {
+        return guess; // index of target
+    }
+    // reached end of search
+    if (min > max) {
+        return null;
+    }
+
+    // recursive search - maintaining indexes by updating min/max values instead of array
+    if (array[guess] < target) {
+        return binarySearch(array, target, guess + 1, max); // exclude middle value
+    } else {
+        return binarySearch(array, target, min, guess - 1);
+    }
+
 };
 
 // 39. Write a merge sort function.
 // mergeSort([34,7,23,32,5,62]) // [5,7,23,32,34,62]
 // https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms
 var mergeSort = function(array) {
+    // base case - array of one or zero elements is sorted by definition
+    if (array.length <= 1) {
+        return array;
+    }
+    var middle = Math.floor(array.length / 2);
+    var left = mergeSort(array.slice(0, middle));
+    var right = mergeSort(array.slice(middle));
+    return merge(left, right);
 };
+
+// helper function to merge (assume left and right are in order when merge is called)
+var merge = function(left, right) {
+    var leftIndex = 0;
+    var rightIndex = 0;
+    var merged = [];
+
+    // compare elements in each array, push in lower one to merged array
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            merged.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            merged.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    // if left is longer than right, keep merging in left's values
+    while (leftIndex < left.length) {
+        merged.push(left[leftIndex]);
+        leftIndex++;
+
+    }
+    // if right is longer than left
+    while (rightIndex < right.length) {
+        merged.push(right[rightIndex]);
+        rightIndex++;
+    }
+
+    return merged;
+}
 
 // 40. Deeply clone objects and arrays.
 // var obj1 = {a:1,b:{bb:{bbb:2}},c:3};
