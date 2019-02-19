@@ -33,7 +33,6 @@ var sum = function(array) {
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
     var n = array.length - 1;
-    //console.log(n)
     // base case
     if (array[n] === undefined) {
         return 0;
@@ -111,7 +110,21 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-    // base case
+    // base cases
+    if (exp === 0) {
+        return 1;
+    }
+
+    if (exp === 1) {
+        return base;
+    }
+
+    // recursive cases
+    if (exp > 1) {
+        return base * exponent(base, exp - 1);
+    } else {
+        return (1 / base) * exponent(base, exp + 1); // TODO - fix precision 
+    }
     
 };
 
@@ -120,6 +133,7 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+
     
 };
 
@@ -130,10 +144,8 @@ var reverse = function(string) {
         return string;
     }
     // recursive case
-    var letters = string.split('');
-    var char = letters.pop();
-    return char.concat(reverse(letters.join('')));
-
+    console.log(string);
+    return reverse(string.substr(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -151,6 +163,7 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
@@ -171,6 +184,18 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+    // base cases
+    if (str1.length !== str2.length) {
+        return false;
+    }
+
+    if (str1.length <= 1) {
+        return str1 === str2;
+    }
+
+    var result = (str1.charAt(0) === str2.charAt(0));
+
+    return result && compareStr(str1.substr(1), str2.substr(1));
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
@@ -339,7 +364,6 @@ var binarySearch = function(array, target, min, max) {
     var max = arguments.length === 4 ? max : array.length - 1; // avoids 0 index evaluating to false with ||
 
     var guess = Math.floor((min + max) / 2); // start with 0 and arr.length - 1
-    console.log(guess);
 
     // base cases
     if (array[guess] === target) {
